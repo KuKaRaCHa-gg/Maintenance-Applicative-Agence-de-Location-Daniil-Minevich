@@ -25,5 +25,31 @@ class ClientTest {
         String s = c1.toString();
         assertThat(s).contains("Alice").contains("Dupont").contains("1990");
     }
-}
 
+    @Test
+    void getters_shouldReturnCorrectValues() {
+        Client client = new Client("Jean", "Dupont", 1990);
+
+        assertThat(client.getFirstName()).isEqualTo("Jean");
+        assertThat(client.getLastName()).isEqualTo("Dupont");
+        assertThat(client.getBirthYear()).isEqualTo(1990);
+    }
+
+    @Test
+    void equals_shouldReturnFalse_forNull() {
+        Client client = new Client("Jean", "Dupont", 1990);
+        assertThat(client.equals(null)).isFalse();
+    }
+
+    @Test
+    void equals_shouldReturnFalse_forDifferentType() {
+        Client client = new Client("Jean", "Dupont", 1990);
+        assertThat(client.equals("not a client")).isFalse();
+    }
+
+    @Test
+    void equals_shouldReturnTrue_forSameReference() {
+        Client client = new Client("Jean", "Dupont", 1990);
+        assertThat(client.equals(client)).isTrue();
+    }
+}

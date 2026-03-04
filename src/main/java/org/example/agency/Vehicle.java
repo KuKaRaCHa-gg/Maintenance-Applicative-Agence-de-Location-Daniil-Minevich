@@ -1,4 +1,4 @@
-﻿package org.example.agency;
+package org.example.agency;
 
 /**
  * Interface représentant un véhicule disponible à la location.
@@ -42,14 +42,6 @@ public interface Vehicle {
 
     /**
      * Calcule et retourne le prix de location journalier du véhicule.
-     * <p>
-     * Le calcul dépend du type de véhicule :
-     * <ul>
-     *     <li>Voiture récente (≤ 5 ans) : 40€ × nombre de sièges</li>
-     *     <li>Voiture ancienne (&gt; 5 ans) : 20€ × nombre de sièges</li>
-     *     <li>Moto : 0,25€ × cylindrée (cm³)</li>
-     * </ul>
-     * </p>
      *
      * @return le prix journalier en euros
      */
@@ -58,18 +50,11 @@ public interface Vehicle {
     /**
      * Retourne une représentation textuelle du véhicule.
      * <p>
-     * Format attendu :
-     * <pre>
-     * [Type] [Marque] [Modèle] [Année] ([Détails]) : [Prix]€
-     * </pre>
-     * Exemples :
-     * <pre>
-     * Car Toyota Corolla 2020 (5 seats) : 200.0€
-     * Motorbike Yamaha MT-07 2021 (689cm³) : 172.3€
-     * </pre>
+     * Format : {@code [Type] [Marque] [Modèle] [Année] ([Détails]) : [Prix]€}
      * </p>
      *
      * @return la représentation textuelle du véhicule
      */
     String toString();
 }
+

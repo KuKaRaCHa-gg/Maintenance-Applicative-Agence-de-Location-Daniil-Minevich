@@ -1,20 +1,7 @@
-﻿package org.example.agency;
+package org.example.agency;
 
 /**
- * Exception levée lorsqu'on tente de supprimer ou de louer un véhicule
- * qui n'est pas référencé dans l'agence.
- * <p>
- * Cette exception est une {@link RuntimeException} non vérifiée.
- * Elle embarque le véhicule qui a causé l'erreur afin de faciliter
- * le diagnostic.
- * </p>
- *
- * <p>Exemple d'utilisation :</p>
- * <pre>
- * RentalAgency agency = new RentalAgency();
- * Car car = new Car("Toyota", "Corolla", 2020, 5);
- * agency.remove(car); // → lève UnknownVehicleException
- * </pre>
+ * Exception levée quand on tente d'accéder à un véhicule absent de l'agence.
  *
  * @author Daniil Minevich
  * @version 1.0
@@ -23,13 +10,13 @@
  */
 public class UnknownVehicleException extends RuntimeException {
 
-    /** Le véhicule qui n'a pas été trouvé dans l'agence. */
+    /** Le véhicule introuvable. */
     private final Vehicle vehicle;
 
     /**
-     * Construit une exception pour un véhicule inconnu de l'agence.
+     * Construit l'exception pour un véhicule inconnu.
      *
-     * @param vehicle le véhicule qui n'existe pas dans l'agence
+     * @param vehicle le véhicule absent de l'agence
      */
     public UnknownVehicleException(Vehicle vehicle) {
         this.vehicle = vehicle;
@@ -45,10 +32,7 @@ public class UnknownVehicleException extends RuntimeException {
     }
 
     /**
-     * Retourne un message d'erreur indiquant que le véhicule n'existe pas dans l'agence.
-     * <p>
-     * Le message inclut la représentation textuelle du véhicule via {@link Vehicle#toString()}.
-     * </p>
+     * Retourne le message d'erreur incluant la description du véhicule.
      *
      * @return le message d'erreur
      */
@@ -57,3 +41,4 @@ public class UnknownVehicleException extends RuntimeException {
         return "Vehicle does not exist in this rental agency: " + vehicle;
     }
 }
+

@@ -1,18 +1,9 @@
-﻿package org.example.util;
+package org.example.util;
 
 import java.time.Year;
 
 /**
- * Classe utilitaire fournissant des informations temporelles.
- * <p>
- * Centralise la récupération de l'année courante afin de faciliter
- * les tests et l'évolution du code (on peut surcharger ou mocker cette classe).
- * </p>
- *
- * <p>Exemple d'utilisation :</p>
- * <pre>
- * int annee = TimeProvider.currentYearValue(); // ex : 2026
- * </pre>
+ * Classe utilitaire fournissant l'année courante.
  *
  * @author Daniil Minevich
  * @version 1.0
@@ -21,14 +12,12 @@ import java.time.Year;
 public class TimeProvider {
 
     /**
-     * Retourne la valeur de l'année courante.
-     * <p>
-     * Utilise {@link java.time.Year#now()} pour obtenir l'année du système.
-     * </p>
+     * Retourne l'année courante.
      *
-     * @return l'année courante sous forme d'entier (ex : 2026)
+     * @return l'année courante (ex : 2026)
      */
     public static int currentYearValue() {
         return Year.now().getValue();
     }
 }
+

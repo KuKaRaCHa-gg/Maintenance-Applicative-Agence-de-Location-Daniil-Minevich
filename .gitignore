@@ -5,6 +5,10 @@ build/
 !**/src/test/**/build/
 .kotlin
 
+### SonarQube local server ###
+sonarqube-*/
+*_output.txt
+
 ### IntelliJ IDEA ###
 .idea/copilot*
 .idea/modules.xml

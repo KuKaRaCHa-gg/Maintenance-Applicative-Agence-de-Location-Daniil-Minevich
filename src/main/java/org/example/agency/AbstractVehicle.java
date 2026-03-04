@@ -1,4 +1,4 @@
-﻿package org.example.agency;
+package org.example.agency;
 
 import org.example.util.TimeProvider;
 
@@ -27,10 +27,7 @@ public abstract class AbstractVehicle implements Vehicle {
     /** Le modèle du véhicule (ex : "Corolla", "MT-07"). */
     protected final String model;
 
-    /**
-     * L'année de fabrication du véhicule.
-     * Doit être comprise entre 1900 et l'année courante incluse.
-     */
+    /** L'année de fabrication du véhicule. */
     protected final int productionYear;
 
     /**
@@ -39,8 +36,7 @@ public abstract class AbstractVehicle implements Vehicle {
      * @param brand          la marque du véhicule
      * @param model          le modèle du véhicule
      * @param productionYear l'année de fabrication
-     * @throws IllegalArgumentException si l'année est strictement inférieure à 1900
-     *                                  ou strictement supérieure à l'année courante
+     * @throws IllegalArgumentException si l'année est invalide
      */
     protected AbstractVehicle(String brand, String model, int productionYear) {
         if (productionYear < 1900 || productionYear > TimeProvider.currentYearValue()) {
@@ -51,25 +47,19 @@ public abstract class AbstractVehicle implements Vehicle {
         this.productionYear = productionYear;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public String getBrand() {
         return brand;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public String getModel() {
         return model;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public int getProductionYear() {
         return productionYear;
@@ -77,13 +67,9 @@ public abstract class AbstractVehicle implements Vehicle {
 
     /**
      * Teste l'égalité entre ce véhicule et un autre objet.
-     * <p>
-     * Deux véhicules sont considérés égaux s'ils sont de la même classe
-     * et partagent la même marque, le même modèle et la même année de fabrication.
-     * </p>
      *
      * @param o l'objet à comparer
-     * @return {@code true} si les deux véhicules sont égaux, {@code false} sinon
+     * @return {@code true} si les deux véhicules sont égaux
      */
     @Override
     public boolean equals(Object o) {
@@ -98,7 +84,7 @@ public abstract class AbstractVehicle implements Vehicle {
     /**
      * Retourne un code de hachage basé sur la marque, le modèle et l'année.
      *
-     * @return le code de hachage du véhicule
+     * @return le code de hachage
      */
     @Override
     public int hashCode() {
@@ -109,27 +95,17 @@ public abstract class AbstractVehicle implements Vehicle {
     }
 
     /**
-     * Retourne le type du véhicule sous forme de chaîne.
-     * <p>
-     * Exemples : {@code "Car"}, {@code "Motorbike"}.
-     * </p>
+     * Retourne le type du véhicule (ex : "Car", "Motorbike").
      *
      * @return le type du véhicule
      */
     protected abstract String getVehicleType();
 
     /**
-     * Retourne les détails spécifiques au type de véhicule,
-     * destinés à être affichés entre parenthèses dans {@link #toString()}.
-     * <p>
-     * Exemples :
-     * <pre>
-     * Car      → "5 seats" ou "1 seat"
-     * Motorbike → "689cm³"
-     * </pre>
-     * </p>
+     * Retourne les détails spécifiques au type de véhicule.
      *
-     * @return les détails spécifiques du véhicule
+     * @return les détails spécifiques
      */
     protected abstract String getSpecificDetails();
 }
+

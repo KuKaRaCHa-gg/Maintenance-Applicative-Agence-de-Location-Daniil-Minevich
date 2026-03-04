@@ -1,18 +1,26 @@
-﻿package org.example;
+package org.example;
 
 import org.example.agency.*;
 
 /**
  * Classe principale démontrant l'utilisation de l'agence de location.
+ *
+ * @author Daniil Minevich
+ * @version 1.0
+ * @since 2026-03-03
  */
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("=== Agence de Location de Véhicules ===\n");
 
-        // Création de l'agence
+    /**
+     * Point d'entrée de l'application.
+     *
+     * @param args arguments de la ligne de commande (non utilisés)
+     */
+    public static void main(String[] args) {
+        System.out.println("=== Agence de Location de Vehicules ===\n");
+
         RentalAgency agency = new RentalAgency();
 
-        // Ajout de véhicules
         Car car1 = new Car("Toyota", "Corolla", 2020, 5);
         Car car2 = new Car("Honda", "Civic", 2019, 4);
         Car car3 = new Car("Mercedes", "S-Class", 2023, 7);
@@ -25,48 +33,32 @@ public class Main {
         agency.add(motorbike1);
         agency.add(motorbike2);
 
-        System.out.println("Véhicules disponibles dans l'agence:");
-        for (Vehicle vehicle : agency.getVehicles()) {
-            System.out.println("  - " + vehicle);
+        System.out.println("Vehicules disponibles:");
+        for (Vehicle v : agency.getVehicles()) {
+            System.out.println("  - " + v);
         }
 
-        // Filtrage par marque
-        System.out.println("\n--- Véhicules de marque Honda ---");
-        BrandCriterion hondaCriterion = new BrandCriterion("Honda");
-        agency.printSelectedVehicles(hondaCriterion);
+        System.out.println("\n--- Honda ---");
+        agency.printSelectedVehicles(new BrandCriterion("Honda"));
 
-        // Filtrage par prix maximal
-        System.out.println("\n--- Véhicules à moins de 200€/jour ---");
-        MaxPriceCriterion priceCriterion = new MaxPriceCriterion(200.0);
-        agency.printSelectedVehicles(priceCriterion);
+        System.out.println("\n--- Moins de 200/jour ---");
+        agency.printSelectedVehicles(new MaxPriceCriterion(200.0));
 
-        // Création de clients
         Client client1 = new Client("Jean", "Dupont", 1990);
         Client client2 = new Client("Marie", "Martin", 1985);
 
-        // Location de véhicules
         System.out.println("\n--- Locations ---");
         try {
-            double price1 = agency.rentVehicle(client1, car1);
-            System.out.println(client1.getFirstName() + " loue: " + car1.getBrand() + " " + car1.getModel() + " pour " + price1 + "€/jour");
-
-            double price2 = agency.rentVehicle(client2, motorbike1);
-            System.out.println(client2.getFirstName() + " loue: " + motorbike1.getBrand() + " " + motorbike1.getModel() + " pour " + price2 + "€/jour");
+            double p1 = agency.rentVehicle(client1, car1);
+            System.out.println(client1 + " loue " + car1.getModel() + " : " + p1 + "EUR/jour");
+            double p2 = agency.rentVehicle(client2, motorbike1);
+            System.out.println(client2 + " loue " + motorbike1.getModel() + " : " + p2 + "EUR/jour");
         } catch (Exception e) {
-            System.err.println("Erreur: " + e.getMessage());
+            System.out.println("Erreur: " + e.getMessage());
         }
 
-        // Véhicules loués
-        System.out.println("\n--- Véhicules actuellement loués ---");
-        for (Vehicle vehicle : agency.allRentedVehicles()) {
-            System.out.println("  - " + vehicle);
-        }
-
-        // Retour d'un véhicule
-        System.out.println("\n--- Retour de véhicule ---");
         agency.returnVehicle(client1);
-        System.out.println(client1.getFirstName() + " a rendu son véhicule");
-
-        System.out.println("\nVéhicules encore loués: " + agency.allRentedVehicles().size());
+        System.out.println("\n" + client1 + " a rendu son vehicule.");
     }
 }
+

@@ -50,6 +50,13 @@ tasks.jacocoTestReport {
         html.required.set(true)
         csv.required.set(false)
     }
+    classDirectories.setFrom(
+        files(classDirectories.files.map {
+            fileTree(it) {
+                exclude("org/example/Main.class")
+            }
+        })
+    )
 }
 
 // Tâches personnalisées pour exécuter des tags de tests
@@ -96,10 +103,13 @@ tasks.register<JacocoCoverageVerification>("jacocoCoverageVerificationCustom") {
 
 sonarqube {
     properties {
-        property("sonar.projectKey", "rental-agency")
-        property("sonar.projectName", "Rental Agency")
+        property("sonar.projectKey", "Compte-rendu-:-Maintenance-Applicative-–-Agence-de-Location")
+        property("sonar.projectName", "Compte-rendu : Maintenance Applicative – Agence de Location")
         property("sonar.host.url", "http://localhost:9000")
+        property("sonar.token", "sqp_80e572b00a7b83e4bd5276167331bd8e90697651")
         property("sonar.gradle.skipCompile", "true")
         property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
+        property("sonar.java.source", "17")
+        property("sonar.sourceEncoding", "UTF-8")
     }
 }

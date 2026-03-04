@@ -1,22 +1,9 @@
-﻿package org.example.agency;
+package org.example.agency;
 
 import java.util.Objects;
 
 /**
  * Représente un client de l'agence de location.
- * <p>
- * Un client est identifié par son prénom, son nom de famille et son année de naissance.
- * Deux clients sont considérés comme égaux s'ils partagent ces trois informations.
- * </p>
- *
- * <p>Exemple d'utilisation :</p>
- * <pre>
- * Client client = new Client("Jean", "Dupont", 1990);
- * client.getFirstName()  // "Jean"
- * client.getLastName()   // "Dupont"
- * client.getBirthYear()  // 1990
- * client.toString()      // "Jean Dupont (1990)"
- * </pre>
  *
  * @author Daniil Minevich
  * @version 1.0
@@ -35,11 +22,11 @@ public class Client {
     private final int birthYear;
 
     /**
-     * Construit un client avec ses informations personnelles.
+     * Construit un client.
      *
-     * @param firstName le prénom du client
-     * @param lastName  le nom de famille du client
-     * @param birthYear l'année de naissance du client
+     * @param firstName le prénom
+     * @param lastName  le nom de famille
+     * @param birthYear l'année de naissance
      */
     public Client(String firstName, String lastName, int birthYear) {
         this.firstName = firstName;
@@ -76,22 +63,14 @@ public class Client {
 
     /**
      * Teste l'égalité entre ce client et un autre objet.
-     * <p>
-     * Deux clients sont égaux s'ils ont le même prénom, le même nom de famille
-     * et la même année de naissance.
-     * </p>
      *
      * @param o l'objet à comparer
-     * @return {@code true} si les deux clients sont égaux, {@code false} sinon
+     * @return {@code true} si les deux clients sont égaux
      */
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
         return birthYear == client.birthYear
                 && Objects.equals(firstName, client.firstName)
@@ -99,9 +78,9 @@ public class Client {
     }
 
     /**
-     * Retourne un code de hachage basé sur le prénom, le nom de famille et l'année de naissance.
+     * Retourne un code de hachage basé sur le prénom, nom et année de naissance.
      *
-     * @return le code de hachage du client
+     * @return le code de hachage
      */
     @Override
     public int hashCode() {
@@ -110,20 +89,13 @@ public class Client {
 
     /**
      * Retourne une représentation textuelle du client.
-     * <p>
-     * Format : {@code "Prénom Nom (année)"}
-     * </p>
-     * <p>Exemple :</p>
-     * <pre>
-     * new Client("Jean", "Dupont", 1990).toString() → "Jean Dupont (1990)"
-     * </pre>
+     * <p>Format : {@code "Prénom Nom (année)"}</p>
      *
-     * @return la représentation textuelle du client
+     * @return la représentation textuelle
      */
     @Override
     public String toString() {
         return firstName + " " + lastName + " (" + birthYear + ")";
     }
 }
-
 
