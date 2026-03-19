@@ -1,48 +1,36 @@
-.gradle
+# Build directories
 build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
-.kotlin
-
-### SonarQube local server ###
-sonarqube-*/
-*_output.txt
-
-### IntelliJ IDEA ###
-.idea/copilot*
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
-*.iml
-*.ipr
+.gradle/
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+dist/
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-### VS Code ###
+# IDE settings
+.idea/
 .vscode/
-
-### Mac OS ###
+*.swp
+*.swo
+*~
 .DS_Store
+*.iml
+
+# SonarQube (if running locally)
+sonarqube-*/
+.sonarqube/
+sonar-report*
+
+# Logs
+*.log
+logs/
+
+# OS
+Thumbs.db
+.env
+.env.local
+
+# Test reports
+TEST-*.xml
+
+# JaCoCo
+jacoco.exec
+*.exec
+
